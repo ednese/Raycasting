@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:46:49 by esende            #+#    #+#             */
-/*   Updated: 2020/06/18 19:17:38 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/18 20:26:29 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ void	header_image(int fd, t_mlx *d)
 
 void	header_file(t_mlx *d, char *filename)
 {
-	int fd;
-	int size;
-	int offset;
+	int		fd;
+	int		size;
+	int		offset;
 
+	ft_putstr("\033[0;32mCreating ");
+	ft_putstr(filename);
+	ft_putstr(".bpm...%\n");
 	if (!filename)
 		filename = "save";
 	filename = ft_strjoin(filename, ".bmp");
-	ft_putstr("Creating ");
-	ft_putstr(filename);
-	ft_putstr("...%\n");
 	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	size = 54 + 4 * d->width * d->height;
 	offset = 54;
@@ -66,4 +66,5 @@ void	header_file(t_mlx *d, char *filename)
 	img_bmp(fd, d);
 	d->save = 0;
 	free(filename);
+	ft_putstr("\033[0;33mDone !\n");
 }

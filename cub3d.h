@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 15:18:53 by esende            #+#    #+#             */
-/*   Updated: 2020/06/18 17:24:28 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/18 19:52:48 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define XK_LATIN1
 # include <X11/keysymdef.h>
 
+# define FR +2
 # define UP			122
 # define DOWN		115
 # define LEFT		113

@@ -6,11 +6,12 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:19:32 by esende            #+#    #+#             */
-/*   Updated: 2020/06/18 17:33:13 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/18 20:30:25 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+# include <time.h>
 
 void	update_pos(t_mlx *d, int sign, char **map)
 {
@@ -28,19 +29,10 @@ void	update_pos_inv(t_mlx *d, int sign, char **map)
 		d->p.pos.y = d->p.pos.y + (d->p.dir.x * sign) * 0.1;
 }
 
-int		key(int key, t_mlx *d)
+int		position(t_mlx *d, int key)
 {
 	int	k;
-	char *nbr;
-	char *screen;
-	static int i;
 
-	k = 1;
-	if (!i)
-			i = 0;
-	nbr = ft_itoa(i);
-	screen = ft_strjoin("screenshot_", nbr);
-	ft_putchar('\n');
 	k = 1;
 	if (key == EXIT)
 		ft_exit(d);
@@ -56,17 +48,34 @@ int		key(int key, t_mlx *d)
 		ft_rotate(d, (double)0.06, 1);
 	else if (key == CAMRIGHT)
 		ft_rotate(d, (double)0.06, 0);
+	else
+		k = 0;
+	return (k);
+}
+
+int		key(int key, t_mlx *d)
+{
+	int		k;
+	time_t	current;
+	char	*str;
+	char	*screen;
+
+	k = 1;
+	current = time(NULL);
+	str = asctime(localtime(&current));
+	screen = ft_strjoin("screenshot: ", str);
+	if (key == EXIT || key == UP || key == DOWN || key == LEFT || key == RIGHT || key == CAMLEFT || key == CAMRIGHT)
+		k = position(d, key);
 	else if (key == 65471)
 	{
-		d->save = 1;
 		d->argv[3] = screen;
-		i++;
+		k = 1;
+		d->save = 1;
 	}
 	else
 		k = 0;
 	if (k)
 		ft_put_pixels(d, 1, 1);
-	free(nbr);
 	free(screen);
 	return (0);
 }
