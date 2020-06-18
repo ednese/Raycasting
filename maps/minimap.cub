@@ -1,0 +1,20 @@
+NO ./path_to_the_north_texture
+SO ./path_to_the_south_texture
+R 1280 720
+EA ./path_to_the_east_texture
+WE ./path_to_the_west_texture
+
+F 97, 197, 197
+C 22, 28, 55
+S ./path_to_the_sprite_texture
+
+1 1 1 1 1 1 1 1 1
+1 0 0 0 0 0 0 0 1
+1 0 0 0 1 0 0 0 1
+1 0 0 0 1 0 0 0 1
+1 0 0 0 1 0 0 0 1
+1 1 1 0 0 0 0 0 1
+1 1 1 0 N 0 0 0 1
+1 1 1 0 0 0 1 0 1
+1 1 0 0 0 0 0 0 1
+1 1 1 1 1 1 1 1 1
