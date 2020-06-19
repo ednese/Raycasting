@@ -6,60 +6,11 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 16:12:03 by esende            #+#    #+#             */
-/*   Updated: 2020/06/14 17:01:08 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/19 22:12:51 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-int		ft_count_nbr(char *s, t_mlx *d)
-{
-	int i;
-	int ret;
-
-	i = 0;
-	ret = 0;
-	while (s[i])
-	{
-		if (s[i] != ' ')
-		{
-			i++;
-			ret++;
-		}
-		else
-			i++;
-	}
-	return (ret);
-}
-
-int		ft_delete_space(char **s, t_mlx *d)
-{
-	int		i;
-	int		ret;
-	char	*res;
-
-	i = 0;
-	ret = 0;
-	if (!(res = malloc(ft_count_nbr(*s, d) + 1)))
-		return (0);
-	while ((*s)[i])
-	{
-		if ((*s)[i] != ' ')
-		{
-			res[ret] = (*s)[i];
-			ret++;
-			i++;
-		}
-		else
-			i++;
-	}
-	res[ret] = 0;
-	free(*s);
-	*s = res;
-	if (ft_verify_line(*s))
-		ft_error(2);
-	return (ret);
-}
 
 char	*ft_strdouble(char **s, char *s1)
 {
@@ -82,13 +33,13 @@ char	*ft_strdouble(char **s, char *s1)
 	return (*s);
 }
 
-char	*ft_strnjoin(char **dst, char *str, t_mlx *d)
+char	*ft_strnjoin(char **dst, char *str)
 {
 	char	*res;
 	size_t	index;
 	size_t	len;
 
-	if (!(res = malloc(ft_strlen(*dst) + ft_count_nbr(str, d) + 2)))
+	if (!(res = malloc(ft_strlen(*dst) + ft_strlen(str) + 2)))
 		return (NULL);
 	len = 0;
 	while ((*dst)[len])
@@ -109,32 +60,47 @@ char	*ft_strnjoin(char **dst, char *str, t_mlx *d)
 	return (*dst);
 }
 
+int		map_missing(char *file)
+{
+	int		i;
+	int		d;
+
+	i = -1;
+	d = 0;
+	while (file[++i])
+	{
+		if (file[i] != '1' && file[i] != '2' &&
+			file[i] != 'X' && file[i] != ' ')
+		    d = 1;
+	}
+	if (d || i <= 0)
+	    return (0);
+	return (1);
+}
+
 char	*ft_transfert_map(t_mlx *d, int fd, char *line)
 {
 	char	*s;
-	int		ret;
-	int		tmp;
 	int		rd;
 
 	if (!(s = malloc(1)))
 		return NULL;
 	*s = 0;
-	tmp = 0;
 	rd = 1;
-	ret = ft_count_nbr(line, d);
-	tmp = ft_delete_space(&line, d);
+	if (!map_missing(line))
+		ft_error(9);
 	ft_strdouble(&s, line);
 	ft_free_str(&line);
 	rd = get_next_line(fd, &line);
 	while (rd)
 	{
-		if (ret != tmp)
-			ft_error(2);
-		tmp = ft_delete_space(&line, d);
-		ft_strnjoin(&s, line, d);
+		ft_file_x(&line, 0, 0, 0);
+		ft_strnjoin(&s, line);
 		ft_free_str(&line);
 		rd = get_next_line(fd, &line);
 	}
+	ft_file_x(&line, 0, 0, 0);
+	ft_strnjoin(&s, line);
 	ft_free_str(&line);
 	return (s);
 }

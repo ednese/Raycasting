@@ -6,26 +6,30 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:19:32 by esende            #+#    #+#             */
-/*   Updated: 2020/06/18 20:30:25 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/18 20:34:11 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-# include <time.h>
+#include <time.h>
 
 void	update_pos(t_mlx *d, int sign, char **map)
 {
-	if (map[(int) d->p.pos.y][(int) (d->p.pos.x + (d->p.dir.x * sign) * 0.1)] != '1')
+	if (map[(int)d->p.pos.y][(int)(d->p.pos.x +
+	(d->p.dir.x * sign) * 0.1)] != '1')
 		d->p.pos.x = d->p.pos.x + (d->p.dir.x * sign) * 0.1;
-	if (map[(int)(d->p.pos.y + (d->p.dir.y * sign) * 0.1)][(int)(d->p.pos.x)] != '1')
+	if (map[(int)(d->p.pos.y + (d->p.dir.y *
+	sign) * 0.1)][(int)(d->p.pos.x)] != '1')
 		d->p.pos.y = d->p.pos.y + (d->p.dir.y * sign) * 0.1;
 }
 
 void	update_pos_inv(t_mlx *d, int sign, char **map)
 {
-	if (map[(int) d->p.pos.y][(int) (d->p.pos.x - (d->p.dir.y * sign) * 0.1)] != '1')
+	if (map[(int)d->p.pos.y][(int)(d->p.pos.x -
+		(d->p.dir.y * sign) * 0.1)] != '1')
 		d->p.pos.x = d->p.pos.x - (d->p.dir.y * sign) * 0.1;
-	if (map[(int)(d->p.pos.y + (d->p.dir.x * sign) * 0.1)][(int)(d->p.pos.x)] != '1')
+	if (map[(int)(d->p.pos.y + (d->p.dir.x *
+		sign) * 0.1)][(int)(d->p.pos.x)] != '1')
 		d->p.pos.y = d->p.pos.y + (d->p.dir.x * sign) * 0.1;
 }
 
@@ -64,7 +68,8 @@ int		key(int key, t_mlx *d)
 	current = time(NULL);
 	str = asctime(localtime(&current));
 	screen = ft_strjoin("screenshot: ", str);
-	if (key == EXIT || key == UP || key == DOWN || key == LEFT || key == RIGHT || key == CAMLEFT || key == CAMRIGHT)
+	if (key == EXIT || key == UP || key == DOWN || key == LEFT
+		|| key == RIGHT || key == CAMLEFT || key == CAMRIGHT)
 		k = position(d, key);
 	else if (key == 65471)
 	{

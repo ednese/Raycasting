@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 14:33:34 by esende            #+#    #+#             */
-/*   Updated: 2020/06/16 21:49:57 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/19 22:21:35 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	ft_init_pos(t_mlx *d, t_pos *p, int *y)
 	p->plane.x = 0;
 	p->plane.y = 0.66;
 	d->numsprites = 0;
+	p->pos.x = 0;
+	p->pos.y = 0;
 	*y = 0;
 }
 
@@ -61,8 +63,8 @@ int		ft_pos(t_pos *p, char **map, t_mlx *d)
 				d->numsprites++;
 			else if (ft_detect_direction(d, map, x, y))
 			{
-				p->pos.x = x /*+ 0.5*/;
-				p->pos.y = y /*+ 0.5*/;
+				p->pos.x = x + 0.5;
+				p->pos.y = y + 0.5;
 				map[y][x] = '0';
 			}
 			x++;

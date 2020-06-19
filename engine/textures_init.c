@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 14:39:12 by esende            #+#    #+#             */
-/*   Updated: 2020/06/16 17:50:27 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/19 20:42:14 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 void	textures_fill(t_tex *t, t_mlx *d)
 {
-	ft_putstr(t->path);
-	ft_putchar('\n');
 	t->tex = mlx_xpm_file_to_image(d->mlx_ptr, t->path, &t->width, &t->height);
 	if (t->tex)
 		t->ptr = (int *)mlx_get_data_addr(t->tex, &t->bpp, &t->size_line, &t->endian);
-	//mlx_destroy_image(d->mlx_ptr, t->tex);
+	else
+		ft_error(4);
 }
 
 char	*textures_path(char *s, int i)

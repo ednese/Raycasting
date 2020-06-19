@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 15:18:03 by esende            #+#    #+#             */
-/*   Updated: 2020/06/18 18:19:39 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/19 21:28:55 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		main(int ac, char **av)
 
 	d.ac = ac;
 	d.argv = av;
+	if (!av[1])
+		ft_error(6);
 	ft_init_struct(&d, d.argv);
 	ft_put_pixels(&d, 0, 1);
 	mlx_hook(d.win, KeyPress, KeyPressMask, key, &d);

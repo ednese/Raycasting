@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 15:18:53 by esende            #+#    #+#             */
-/*   Updated: 2020/06/18 19:52:48 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/19 20:29:45 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,18 @@ typedef struct		s_tex
 	int			endian;
 }					t_tex;
 
+typedef struct		s_arg
+{
+    int			r;
+    int			no;
+    int			so;
+    int			we;
+    int			ea;
+    int			s;
+    int			f;
+    int			c;
+}					t_arg;
+
 typedef struct		s_spt
 {
 	int			vmovescreen;
@@ -158,10 +170,8 @@ int					ft_atoi_base(char *str, char *base);
 int					ft_rgb_to_hex(char *s);
 void				ft_free_str(char **str);
 char				*ft_transfert_map(t_mlx *d, int fd, char *line);
-int					ft_strdif(char *s, char c1, char c2, char c3);
 void				ft_error(int e);
 int					ft_verify_line(char *s);
-int					ft_find(char *s, char *c);
 char				*ft_strmore(char **s, char *c);
 int					ft_put_pixels(t_mlx *d, int n, int play);
 int					ft_pos(t_pos *p, char **map, t_mlx *d);
@@ -182,5 +192,8 @@ int					*sort_sprites(int n, double *tab);
 int					ft_verline_sprite(t_mlx *d, t_int size, int x, int *color);
 void				init_ray(t_pos *p, t_mlx *d, int x);
 void				header_file(t_mlx *d, char *filename);
+void				init_arg(t_mlx *d);
+int					check_map(char **map);
+int					ft_file_x(char **file, int ret, int d, int f);
 
 #endif
