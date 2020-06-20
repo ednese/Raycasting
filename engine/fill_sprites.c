@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 14:02:43 by esende            #+#    #+#             */
-/*   Updated: 2020/06/16 22:48:37 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 13:11:28 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ int		*fill_buffer_sprites(t_mlx *d, t_int start, t_int ds, t_int de)
 void	draw_sprites(t_mlx *d, t_double transform, t_int ds, t_int de)
 {
 	t_int	start;
-	t_int	tex;
 	t_int	draw;
-	int		det;
 	int		*buffer;
 
 	start.x = ds.x - 1;

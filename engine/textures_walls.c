@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 14:02:43 by esende            #+#    #+#             */
-/*   Updated: 2020/06/16 17:57:22 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 13:10:34 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		*textures_buff(t_int coord_tex, double t_draw_s, t_int dr, t_mlx *d)
 	return (buffer);
 }
 
-int		*textures_walls(char **map, t_mlx *d, t_pos *p, t_int draw)
+int		*textures_walls(t_mlx *d, t_pos *p, t_int draw)
 {
 	double		wall_x;
 	double		tex_draw_start;

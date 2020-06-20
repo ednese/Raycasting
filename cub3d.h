@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 15:18:53 by esende            #+#    #+#             */
-/*   Updated: 2020/06/19 20:29:45 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 13:09:28 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,11 +169,11 @@ char				*ft_itoahex_color(long int n);
 int					ft_atoi_base(char *str, char *base);
 int					ft_rgb_to_hex(char *s);
 void				ft_free_str(char **str);
-char				*ft_transfert_map(t_mlx *d, int fd, char *line);
+char				*ft_transfert_map(int fd, char *line);
 void				ft_error(int e);
 int					ft_verify_line(char *s);
 char				*ft_strmore(char **s, char *c);
-int					ft_put_pixels(t_mlx *d, int n, int play);
+int					ft_put_pixels(t_mlx *d, int n);
 int					ft_pos(t_pos *p, char **map, t_mlx *d);
 double				ft_abs(double n);
 void				ft_rotate(t_mlx *d, double v, int n);
@@ -182,10 +182,8 @@ int					ft_exit(t_mlx *d);
 void				ft_fill_walls(char **map, t_mlx *d);
 int					ft_verline(t_mlx *d, t_int size, int x, int color);
 int					ft_verline_tex(t_mlx *d, t_int size, int x, int *color);
-int					managed_mouse(int key, int w, int h, t_mlx *d);
-int					*textures_walls(char **map, t_mlx *d, t_pos *p, t_int draw);
+int					*textures_walls(t_mlx *d, t_pos *p, t_int draw);
 void				textures_init(t_mlx *d, char *s);
-int					menu(t_mlx *d, int n, int play);
 void				fill_sprites(char **map, t_mlx *d);
 t_dble				srch_sprites(char **map, int n);
 int					*sort_sprites(int n, double *tab);

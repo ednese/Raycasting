@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 20:17:25 by esende            #+#    #+#             */
-/*   Updated: 2020/06/19 20:18:48 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 13:14:54 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int        value_direction(char **map, int *x, int *y, int d)
     {
         axe = (d % 4 - 2) * -1;
         if (*x + axe >= 0
-            && *x + axe < ft_strlen(map[*y])
+            && *x + axe < (int)ft_strlen(map[*y])
             && map[*y][*x + axe] != 'X')
         {
             *x += axe;
@@ -31,7 +31,7 @@ int        value_direction(char **map, int *x, int *y, int d)
     {
         axe = d % 4 - 1;
         if (*y + axe >= 0 && map[*y + axe]
-            && *x < ft_strlen(map[*y + axe])
+            && *x < (int)ft_strlen(map[*y + axe])
             && map[*y + axe][*x] != 'X')
         {
             *y += axe;

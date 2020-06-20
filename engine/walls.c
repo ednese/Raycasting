@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:47:04 by esende            #+#    #+#             */
-/*   Updated: 2020/06/16 22:19:28 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 13:10:28 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	put_walls(char **map, t_mlx *d, t_int draw)
 		draw = size_ray(&d->p, d, d->p.side);
 		if (d->t[3].ptr[1] && d->t[2].ptr[1] && d->t[1].ptr[1] && d->t[0].ptr[1])
 		{
-			buffer = textures_walls(map, d, &d->p, draw);
+			buffer = textures_walls(d, &d->p, draw);
 			ft_verline_tex(d, draw, w, buffer);
 		}
 		free(buffer);

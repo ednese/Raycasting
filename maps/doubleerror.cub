@@ -9,6 +9,12 @@ F 1, 10, 10
 C 24, 25, 25
 
 R 1920 1080
+NO textures/CastleWallBlock.xpm
+SO textures/CastleBrickBlock_1.xpm
+EA textures/BrickBlock_1.xpm
+WE textures/UndergroundBrickBlock.xpm
+
+S textures/mario-sprite.xpm
 F 10, 10, 10
 C 214, 235, 255
 

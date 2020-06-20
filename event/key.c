@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:19:32 by esende            #+#    #+#             */
-/*   Updated: 2020/06/18 20:34:11 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 13:07:20 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		key(int key, t_mlx *d)
 	else
 		k = 0;
 	if (k)
-		ft_put_pixels(d, 1, 1);
+		ft_put_pixels(d, 1);
 	free(screen);
 	return (0);
 }

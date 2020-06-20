@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 12:46:10 by esende            #+#    #+#             */
-/*   Updated: 2020/06/19 22:13:33 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 12:54:28 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int		ft_managed_file(t_mlx *d, char **av)
 	char	*file;
 	int		fd;
 	int		ret;
-	int		x;
 	char	*s;
 
 	format_cub(av);
@@ -83,7 +82,7 @@ int		ft_managed_file(t_mlx *d, char **av)
 		ft_free_str(&file);
 		ret = get_next_line(fd, &file);
 	}
-	s = ft_transfert_map(d, fd, file);
+	s = ft_transfert_map(fd, file);
 	d->filemap = ft_split(s, '\n');
 	free(s);
 	if (!check_map(d->filemap))

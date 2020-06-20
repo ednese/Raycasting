@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 21:35:27 by esende            #+#    #+#             */
-/*   Updated: 2020/06/19 20:36:49 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 13:40:44 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,25 @@ void	file_arg(t_mlx *d, t_arg info, int i)
     while (d->arg[++i])
 	{
 		if (d->arg[i] == 'R')
-			info.r = 1;
+			info.r += 1;
 		else if (d->arg[i] == 'N')
-			info.no = 1;
+			info.no += 1;
 		else if (d->arg[i] == 'S' && d->arg[i+1] == 'O')
-			info.so = 1;
+			info.so += 1;
 		else if (d->arg[i] == 'W')
-			info.we = 1;
-        else if (d->arg[i] == 'E')
-			info.ea = 1;
+			info.we += 1;
+        else if (d->arg[i] == 'E' && d->arg[i+1] == 'A')
+			info.ea += 1;
         else if (d->arg[i] == 'S' && (d->arg[i+1] == '\n' || !d->arg[i+1]))
-			info.s = 1;
+			info.s += 1;
         else if (d->arg[i] == 'F')
-			info.f = 1;
+			info.f += 1;
         else if (d->arg[i] == 'C')
-			info.c = 1;
+			info.c += 1;
 	}
-    if (info.r + info.no + info.so + info.we +
-    info.ea + info.s + info.f + info.c < 8)
+    if (info.r < 1 || info.no != 1 || info.so != 1
+        || info.we != 1 || info.ea != 1 || info.s != 1
+        || info.f < 1 || info.c < 1)
         ft_error(1);
 }
 

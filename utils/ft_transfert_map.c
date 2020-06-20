@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 16:12:03 by esende            #+#    #+#             */
-/*   Updated: 2020/06/19 22:12:51 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 12:54:12 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int		map_missing(char *file)
 	return (1);
 }
 
-char	*ft_transfert_map(t_mlx *d, int fd, char *line)
+char	*ft_transfert_map(int fd, char *line)
 {
 	char	*s;
 	int		rd;

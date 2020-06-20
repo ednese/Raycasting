@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:57:11 by esende            #+#    #+#             */
-/*   Updated: 2020/05/16 13:57:17 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 13:14:05 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,16 @@ int		fill_tab(double *tab, double *maxstock, int n, int k)
 
 int		*sort_sprites(int n, double *tab)
 {
-	int i;
 	int k;
-	double    stock;
 	double  maxstock;
 	int    *newtab;
 
 	newtab = malloc(sizeof(int *)  * n);
-	i = 0;
 	k = 0;
 	maxstock = 0;
 	while (k < n)
 	{
 	    newtab[k] = fill_tab(tab, &maxstock, n, k);
-	    stock = 0;
 		k++;
 	}
 	return (newtab);
