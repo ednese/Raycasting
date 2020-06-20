@@ -6,16 +6,16 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 13:39:12 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 13:06:19 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 14:02:05 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 #include <stdbool.h>
 
-char    *tolowercase(char *str)
+char	*tolowercase(char *str)
 {
-	size_t    index;
+	size_t	index;
 
 	index = 0;
 	while (str[index])
@@ -27,9 +27,9 @@ char    *tolowercase(char *str)
 	return (str);
 }
 
-bool    equal(char *str, char *str1)
+bool	equal(char *str, char *str1)
 {
-	size_t    index;
+	size_t	index;
 
 	index = 0;
 	while (str[index] && str[index] == str1[index])
@@ -89,7 +89,8 @@ int		ft_put_pixels(t_mlx *d, int n)
 	ft_fill_walls(d->filemap, d);
 	ft_fill_color(0, 0, d);
 	mlx_put_image_to_window(d->mlx_ptr, d->win, d->img.img_ptr, 0, 0);
-	if ((d->ac > 2 && i == 1 && equal(tolowercase(d->argv[2]), "--save")) || (d->save && i > 1))
+	if ((d->ac > 2 && i == 1 && equal(tolowercase(d->argv[2]), "--save"))
+		|| (d->save && i > 1))
 		header_file(d, d->argv[3]);
 	mlx_destroy_image(d->mlx_ptr, d->img.img_ptr);
 	return (0);

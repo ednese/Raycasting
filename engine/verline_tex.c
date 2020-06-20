@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:55:50 by esende            #+#    #+#             */
-/*   Updated: 2020/06/16 20:30:11 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 14:19:59 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int		ft_verline_tex(t_mlx *d, t_int size, int x, int *color)
 		incopy = color[index];
 		if (!d->img.data[y * d->width + x])
 			d->img.data[y * d->width + x] = incopy;
-			//d->img.data[y * d->width + x] = color[index];
 		index++;
 		y++;
 	}

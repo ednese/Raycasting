@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 15:18:53 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 13:09:28 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 13:52:16 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,25 +84,25 @@ typedef struct		s_tex
 	char		*path;
 	void		*tex;
 	int			*ptr;
-	t_int		start;
-	t_int		end;
 	int			width;
 	int			height;
 	int			bpp;
 	int			size_line;
 	int			endian;
+	t_int		start;
+	t_int		end;
 }					t_tex;
 
 typedef struct		s_arg
 {
-    int			r;
-    int			no;
-    int			so;
-    int			we;
-    int			ea;
-    int			s;
-    int			f;
-    int			c;
+	int			r;
+	int			no;
+	int			so;
+	int			we;
+	int			ea;
+	int			s;
+	int			f;
+	int			c;
 }					t_arg;
 
 typedef struct		s_spt
@@ -140,26 +140,26 @@ typedef struct		s_img
 
 typedef struct		s_mlx
 {
+	double		*zbuffer;
 	void		*mlx_ptr;
 	void		*win;
 	char		*map;
 	char		*arg;
+	char		**filemap;
+	char		**argv;
 	int			width;
 	int			height;
 	int			floor;
 	int			sky;
+	int			save;
+	int			ac;
 	int			error;
 	int			index;
 	int			numsprites;
 	t_img		img;
-	int 		save;
-	int			ac;
 	t_pos		p;
 	t_spt		s;
-	char		**filemap;
-	char		**argv;
 	t_tex		t[5];
-	double		*zbuffer;
 }					t_mlx;
 
 void				ft_init_struct(t_mlx *d, char **av);

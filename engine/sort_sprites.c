@@ -6,18 +6,18 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:57:11 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 13:14:05 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 14:04:29 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		fill_tab(double *tab, double *maxstock, int n, int k)
+int	fill_tab(double *tab, double *maxstock, int n, int k)
 {
-	int i;
-	double    stock;
-	int    newtab;
-	
+	double	stock;
+	int		newtab;
+	int		i;
+
 	stock = 0;
 	i = 0;
 	while (i < n)
@@ -38,18 +38,18 @@ int		fill_tab(double *tab, double *maxstock, int n, int k)
 	return (newtab);
 }
 
-int		*sort_sprites(int n, double *tab)
+int	*sort_sprites(int n, double *tab)
 {
-	int k;
-	double  maxstock;
-	int    *newtab;
+	double	maxstock;
+	int		*newtab;
+	int		k;
 
-	newtab = malloc(sizeof(int *)  * n);
 	k = 0;
+	newtab = malloc(sizeof(int *) * n);
 	maxstock = 0;
 	while (k < n)
 	{
-	    newtab[k] = fill_tab(tab, &maxstock, n, k);
+		newtab[k] = fill_tab(tab, &maxstock, n, k);
 		k++;
 	}
 	return (newtab);

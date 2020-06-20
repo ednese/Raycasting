@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/16 13:50:01 by esende            #+#    #+#             */
-/*   Updated: 2020/05/16 13:51:33 by esende           ###   ########.fr       */
+/*   Created: 2020/06/20 14:11:42 by esende            #+#    #+#             */
+/*   Updated: 2020/06/20 14:11:44 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,28 @@
 t_dble	srch_sprites(char **map, int n)
 {
 	t_dble	tab;
-	int		x;
-	int		y;
+	t_int	c;
 	int		i;
 
-	y = 0;
+	c.y = 0;
 	i = 0;
 	tab.x = malloc(sizeof(double) * n);
 	tab.y = malloc(sizeof(double) * n);
-	while (map[y] && n)
+	while (map[c.y] && n)
 	{
-		x = 0;
-		while(map[y][x] && n)
+		c.x = 0;
+		while (map[c.y][c.x] && n)
 		{
-			if (map[y][x] == '2')
+			if (map[c.y][c.x] == '2')
 			{
-				tab.x[i] = x + 0.5;
-				tab.y[i] = y + 0.5;
+				tab.x[i] = c.x + 0.5;
+				tab.y[i] = c.y + 0.5;
 				i++;
 				n--;
 			}
-			x++;
+			c.x++;
 		}
-		y++;
+		c.y++;
 	}
 	return (tab);
 }

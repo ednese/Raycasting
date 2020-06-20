@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 20:29:13 by esende            #+#    #+#             */
-/*   Updated: 2020/06/19 22:06:11 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 13:59:42 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int		ft_file_x(char **file, int ret, int d, int f)
 		if ((*file)[i] == '1')
 			ret = 1;
 		if ((*file)[i] != '1' && (*file)[i] != ' ')
-		    d = 1;
+			d = 1;
 	}
 	if (!ret || (d && f) || !(res = malloc(strlen(*file) + 1)))
-	    return (0);
+		return (0);
 	i = -1;
 	while ((*file)[++i])
 	{
