@@ -71,10 +71,10 @@ int		map_missing(char *file)
 	{
 		if (file[i] != '1' && file[i] != '2' &&
 			file[i] != 'X' && file[i] != ' ')
-		    d = 1;
+			d = 1;
 	}
 	if (d || i <= 0)
-	    return (0);
+		return (0);
 	return (1);
 }
 
@@ -84,7 +84,7 @@ char	*ft_transfert_map(int fd, char *line)
 	int		rd;
 
 	if (!(s = malloc(1)))
-		return NULL;
+		return (NULL);
 	*s = 0;
 	rd = 1;
 	if (!map_missing(line))

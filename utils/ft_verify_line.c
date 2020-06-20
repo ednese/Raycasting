@@ -23,7 +23,7 @@ int		ft_verify_line(char *s)
 	{
 		if (s[i] != 'N' && s[i] != 'S' && s[i] != 'E' && s[i] != 'W'
 			&& s[i] != '0' && s[i] != '1' && s[i] != '2' && s[i] != 'X')
-				return (1);
+			return (1);
 		i++;
 	}
 	return (0);

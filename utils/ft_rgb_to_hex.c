@@ -28,8 +28,8 @@ int		ft_atonumc(char *s, int *i)
 char	*ft_fill_rgb(int r, int g, int b)
 {
 	char	*rhex;
-	char 	*ghex;
-	char 	*bhex;
+	char	*ghex;
+	char	*bhex;
 	char	*temp;
 	char	*res;
 

@@ -12,41 +12,41 @@
 
 #include "../cub3d.h"
 
-int        ft_len_arg(char *s)
+int		ft_len_arg(char *s)
 {
-    int len;
+	int	len;
 
-    len = 0;
-    while(s[len] && s[len] != ' ')
-        len++;
-    return (len);
+	len = 0;
+	while (s[len] && s[len] != ' ')
+		len++;
+	return (len);
 }
 
-char    *ft_strmore(char **s, char *c)
+char	*ft_strmore(char **s, char *c)
 {
-    char    *res;
-    size_t    index;
-    size_t    len;
-    size_t    arg;
+	char		*res;
+	size_t		index;
+	size_t		len;
+	size_t		arg;
 
-    arg = ft_len_arg(c);
-    if (!(res = malloc(sizeof(char *) * (ft_strlen(*s) + arg + 2))))
-        return (0);
-    len = 0;
-    while ((*s)[len])
-    {
-        res[len] = (*s)[len];
-        len++;
-    }
-    index = 0;
-    while (c[index] && index < arg)
-    {
-        res[len + index] = c[index];
-        index++;
-    }
-    res[len + index++] = '\n';
-    res[len + index] = 0;
-    free(*s);
-    *s = res;
-    return (res);
+	arg = ft_len_arg(c);
+	if (!(res = malloc(sizeof(char *) * (ft_strlen(*s) + arg + 2))))
+		return (0);
+	len = 0;
+	while ((*s)[len])
+	{
+		res[len] = (*s)[len];
+		len++;
+	}
+	index = 0;
+	while (c[index] && index < arg)
+	{
+		res[len + index] = c[index];
+		index++;
+	}
+	res[len + index++] = '\n';
+	res[len + index] = 0;
+	free(*s);
+	*s = res;
+	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 17:09:02 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 13:45:25 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 14:26:55 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_error(int e)
 {
 	ft_putstr("\033[0;31mError !\n");
 	if (e == 1)
-		ft_putstr("Not enough or too much arguments in the scene description file.\n");
+		ft_putstr("Not enough or too much arguments in file.\n");
 	else if (e == 2)
 		ft_putstr("Invalid map.\n");
 	else if (e == 3)

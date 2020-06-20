@@ -29,7 +29,7 @@ int		ft_resolution(char *s, t_mlx *d)
 {
 	int i;
 	int width;
-    int height;
+	int height;
 
 	i = 0;
 	d->width = 0;
@@ -47,8 +47,8 @@ int		ft_resolution(char *s, t_mlx *d)
 		ft_error(10);
 	mlx_get_screen_size(d->mlx_ptr, &width, &height);
 	if (d->width > width)
-        d->width = width;
+		d->width = width;
 	if (d->height > height)
-        d->height = height;
+		d->height = height;
 	return (0);
 }

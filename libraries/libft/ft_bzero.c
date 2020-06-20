@@ -24,5 +24,4 @@ void	ft_bzero(void *s, size_t n)
 		str[i] = 0;
 		i++;
 	}
-	//return (*s);
 }
