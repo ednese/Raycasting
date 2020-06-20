@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 18:01:08 by esende            #+#    #+#             */
-/*   Updated: 2020/06/18 22:48:50 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 12:32:46 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		ft_resolution(char *s, t_mlx *d)
 	i = 0;
 	d->width = 0;
 	d->height = 0;
-	while (s[i])
+	while (s[i] && (!d->height || !d->width))
 	{
 		if (s[i] >= '0' && s[i] <= '9' && !d->width)
 			d->width = ft_atonum(s, &i);
@@ -43,6 +43,8 @@ int		ft_resolution(char *s, t_mlx *d)
 		else
 			i++;
 	}
+	if (!d->height || !d->width)
+		ft_error(10);
 	mlx_get_screen_size(d->mlx_ptr, &width, &height);
 	if (d->width > width)
         d->width = width;

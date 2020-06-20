@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 11:28:06 by esende            #+#    #+#             */
-/*   Updated: 2020/06/14 15:25:24 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/20 12:35:08 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_init_rgb(char *s, int r, int g, int b)
 	int		i;
 
 	i = 0;
-	while (s[i])
+	while (s[i] && (!r || !g || !b))
 	{
 		if (s[i] >= '0' && s[i] <= '9' && !r)
 			r = ft_atonumc(s, &i);
@@ -61,6 +61,8 @@ char	*ft_init_rgb(char *s, int r, int g, int b)
 		else
 			i++;
 	}
+	if (!r || !g || !b)
+		ft_error(11);
 	return (ft_fill_rgb(r, g, b));
 }
 
