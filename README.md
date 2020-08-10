@@ -22,4 +22,4 @@ Shadows based on the distance
 ## Actual Status
 Finished
 ## Rated
-105%
+102%
