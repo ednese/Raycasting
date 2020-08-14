@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 14:39:12 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 14:13:46 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/27 20:58:09 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	textures_fill(t_tex *t, t_mlx *d)
 			mlx_get_data_addr(t->tex, &t->bpp, &t->size_line, &t->endian);
 	else
 		ft_error(4);
+	free(t->path);
 }
 
 char	*textures_path(char *s, int i)

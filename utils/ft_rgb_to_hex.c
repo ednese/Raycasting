@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 11:28:06 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 12:35:08 by esende           ###   ########.fr       */
+/*   Updated: 2020/07/01 10:35:59 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int		ft_atonumc(char *s, int *i)
 		res = (res * 10) + (s[*i] - 48);
 		(*i)++;
 	}
+	if (res > 255)
+		ft_error(12);
 	return (res);
 }
 
@@ -45,23 +47,56 @@ char	*ft_fill_rgb(int r, int g, int b)
 	return (res);
 }
 
+int		data_rgb(char *s, int save, int i)
+{
+	static int	v;
+	int			d;
+
+	d = 0;
+	if (!v || !i)
+		v = 0;
+	if (s[i] >= '0' && s[i] <= '9')
+		d += save + 1;
+	else if (i && s[i] != ' ' && s[i] != ',')
+		ft_error(13);
+	else if (!i
+			&& s[i] != ' '
+			&& s[i] != ','
+			&& s[0] != 'C'
+			&& s[0] != 'F')
+		ft_error(13);
+	if (s[i] == ',')
+		v--;
+	if (d && !v)
+		v = 1;
+	else if (d && v)
+		ft_error(13);
+	return (d);
+}
+
 char	*ft_init_rgb(char *s, int r, int g, int b)
 {
 	int		i;
+	int		d;
+	int		save;
 
 	i = 0;
-	while (s[i] && (!r || !g || !b))
+	save = 0;
+	while (s[i])
 	{
-		if (s[i] >= '0' && s[i] <= '9' && !r)
+		d = data_rgb(s, save, i);
+		if (d == 1)
 			r = ft_atonumc(s, &i);
-		else if (s[i] >= '0' && s[i] <= '9' && !g)
+		else if (d == 2)
 			g = ft_atonumc(s, &i);
-		else if (s[i] >= '0' && s[i] <= '9' && !b)
+		else if (d == 3)
 			b = ft_atonumc(s, &i);
 		else
 			i++;
+		if (d)
+			save = d;
 	}
-	if (!r || !g || !b)
+	if (save != 3)
 		ft_error(11);
 	return (ft_fill_rgb(r, g, b));
 }

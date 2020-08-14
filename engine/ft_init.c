@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 12:46:10 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 14:00:20 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/28 21:18:58 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int		ft_managed_textures(char **av, t_mlx *d)
 	char	*s;
 	int		fd;
 
-	s = NULL;
 	fd = open(av[1], O_RDONLY);
 	ret = get_next_line(fd, &s);
 	while (ret && (s[0] != 'X' && s[0] != '1'))
@@ -60,6 +59,10 @@ int		ft_managed_textures(char **av, t_mlx *d)
 		ret = get_next_line(fd, &s);
 	}
 	ft_free_str(&s);
+	while (get_next_line(fd, &s) != 0)
+		ft_free_str(&s);
+	ft_free_str(&s);
+	space_error(d->filemap);
 	return (0);
 }
 
@@ -74,7 +77,6 @@ int		ft_managed_file(t_mlx *d, char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		ft_error(8);
-	file = NULL;
 	ret = get_next_line(fd, &file);
 	while (ret && (!ft_file_x(&file, 0, 0, 1)))
 	{
@@ -95,11 +97,13 @@ void	ft_init_struct(t_mlx *d, char **av)
 	d->arg = malloc(1);
 	*d->arg = 0;
 	d->error = 0;
+	d->width = 0;
+	d->height = 0;
 	d->mlx_ptr = mlx_init();
 	ft_managed_file(d, av);
-	d->win = mlx_new_window(d->mlx_ptr, d->width, d->height, "CUB3D");
 	d->map = NULL;
 	ft_managed_textures(av, d);
+	if (d->save)
+		d->win = mlx_new_window(d->mlx_ptr, d->width, d->height, "CUB3D");
 	init_arg(d);
-	d->save = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 14:33:34 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 14:00:46 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/28 20:36:44 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		ft_detect_direction(t_mlx *d, char **map, int x, int y)
 	return (0);
 }
 
-void	ft_init_pos(t_mlx *d, t_pos *p, int *y)
+void	ft_init_pos(t_mlx *d, t_pos *p, int *y, int *player)
 {
 	p->dir.x = -1;
 	p->dir.y = 0;
@@ -46,14 +46,22 @@ void	ft_init_pos(t_mlx *d, t_pos *p, int *y)
 	p->pos.x = 0;
 	p->pos.y = 0;
 	*y = 0;
+	*player = 0;
+}
+
+void	map_verif_pos(t_pos *p, int player)
+{
+	if ((!p->pos.x && !p->pos.y) || player > 1)
+		ft_error(3);
 }
 
 int		ft_pos(t_pos *p, char **map, t_mlx *d)
 {
 	int x;
 	int y;
+	int player;
 
-	ft_init_pos(d, p, &y);
+	ft_init_pos(d, p, &y, &player);
 	while (map[y])
 	{
 		x = 0;
@@ -66,13 +74,12 @@ int		ft_pos(t_pos *p, char **map, t_mlx *d)
 				p->pos.x = x + 0.5;
 				p->pos.y = y + 0.5;
 				map[y][x] = '0';
+				player++;
 			}
 			x++;
 		}
 		y++;
 	}
-	if (p->pos.x || p->pos.y)
-		return (1);
-	ft_error(3);
+	map_verif_pos(p, player);
 	return (0);
 }

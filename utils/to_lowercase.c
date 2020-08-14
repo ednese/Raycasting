@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verline_sprite.c                                   :+:      :+:    :+:   */
+/*   to_lowercase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/16 20:31:39 by esende            #+#    #+#             */
-/*   Updated: 2020/06/21 14:24:25 by esende           ###   ########.fr       */
+/*   Created: 2020/06/21 11:21:17 by esende            #+#    #+#             */
+/*   Updated: 2020/06/21 16:44:23 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		ft_verline_sprite(t_mlx *d, t_int size, int x, int *color)
+char	*tolowercase(char *str)
 {
-	int		index;
-	int		y;
-	int		abs_y;
+	size_t	index;
 
-	abs_y = size.x - size.y;
-	abs_y < 0 ? abs_y = abs_y * -1 : abs_y;
 	index = 0;
-	y = size.x;
-	while (index < abs_y && y < d->height)
+	while (str[index])
 	{
-		if ((color[index] & 0x00FFFFFF) != 0)
-			d->img.data[y * d->width + x] = color[index];
+		if (str[index] >= 'A' && str[index] <= 'Z')
+			str[index] += 'a' - 'A';
 		index++;
-		y++;
 	}
-	return (index);
+	return (str);
 }

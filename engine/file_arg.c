@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 21:35:27 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 13:57:21 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/21 11:05:18 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	file_arg(t_mlx *d, t_arg info, int i)
 		else if (d->arg[i] == 'C')
 			info.c += 1;
 	}
-	if (info.r < 1 || info.no != 1 || info.so != 1
+	if (info.r != 1 || info.no != 1 || info.so != 1
 			|| info.we != 1 || info.ea != 1 || info.s != 1
-			|| info.f < 1 || info.c < 1)
+			|| info.f != 1 || info.c != 1)
 		ft_error(1);
 }
 

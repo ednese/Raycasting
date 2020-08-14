@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 14:02:43 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 14:00:28 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/21 12:55:43 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_int	draw_start(t_mlx *d, t_double transform)
 	t_int	drawstart;
 
 	d->s.spritescreen_x = (int)((d->width / 2) *
-		(1 + transform.x / transform.y));
+			(1 + transform.x / transform.y));
 	d->s.vmovescreen = (int)(0.0 / transform.y);
 	d->s.spriteheight = abs((int)(d->height / transform.y));
 	d->s.spritewidth = abs((int)(d->height / transform.y));
@@ -66,7 +66,7 @@ void	draw_sprites(t_mlx *d, t_double transform, t_int ds, t_int de)
 	while (++start.x < de.x)
 	{
 		if (transform.y > 0 && start.x > 0 && start.x < d->width
-			&& transform.y < d->zbuffer[start.x])
+				&& transform.y < d->zbuffer[start.x])
 		{
 			draw.x = ds.y;
 			draw.y = de.y;

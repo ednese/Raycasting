@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:46:49 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 14:02:57 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/28 20:09:35 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,12 @@ void	header_image(int fd, t_mlx *d)
 	write(fd, &d->height, sizeof(int));
 	write(fd, &plane, sizeof(short int));
 	write(fd, &d->img.bpp, sizeof(short int));
-	write(fd, &unused, sizeof(int) * 6);
+	write(fd, &unused, sizeof(int));
+	write(fd, &unused, sizeof(int));
+	write(fd, &unused, sizeof(int));
+	write(fd, &unused, sizeof(int));
+	write(fd, &unused, sizeof(int));
+	write(fd, &unused, sizeof(int));
 }
 
 void	header_file(t_mlx *d, char *filename)
@@ -55,7 +60,7 @@ void	header_file(t_mlx *d, char *filename)
 	ft_putstr(filename);
 	ft_putstr(".bpm...%\n");
 	filename = ft_strjoin(filename, ".bmp");
-	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	size = 54 + 4 * d->width * d->height;
 	offset = 54;
 	write(fd, "BM", sizeof(short int));
@@ -64,7 +69,9 @@ void	header_file(t_mlx *d, char *filename)
 	write(fd, &offset, sizeof(int));
 	header_image(fd, d);
 	img_bmp(fd, d);
-	d->save = 0;
 	free(filename);
-	ft_putstr("\033[0;33mDone !\n");
+	ft_putstr("\033[0;33mDone !\n\033[0m");
+	if (!d->save)
+		ft_exit(d);
+	d->save = 0;
 }

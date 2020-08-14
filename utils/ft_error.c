@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 17:09:02 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 14:26:55 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/28 21:35:44 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ void	ft_error_more(int e)
 		ft_putstr("Not enough arguments for the resolution.\n");
 	else if (e == 11)
 		ft_putstr("Not enough arguments for the floor/sky.\n");
+	else if (e == 12)
+		ft_putstr("The number is too high\n");
+	else if (e == 13)
+		ft_putstr("Wrong pattern\n");
 }
 
 void	ft_error(int e)
@@ -34,7 +38,7 @@ void	ft_error(int e)
 	else if (e == 2)
 		ft_putstr("Invalid map.\n");
 	else if (e == 3)
-		ft_putstr("No position for the player in the map.\n");
+		ft_putstr("Invalid map.\n");
 	else if (e == 4)
 		ft_putstr("Texture was not found.\n");
 	else if (e == 5)

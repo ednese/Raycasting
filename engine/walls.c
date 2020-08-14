@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:47:04 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 14:20:40 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/23 16:30:36 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,14 @@ t_int	size_ray(t_pos *p, t_mlx *d, int side)
 	return (draw);
 }
 
-void	put_walls(char **map, t_mlx *d, t_int draw)
+void	ft_fill_walls(char **map, t_mlx *d)
 {
 	int		w;
 	int		*buffer;
+	t_int	draw;
 
 	w = -1;
+	d->zbuffer = malloc(sizeof(double) * d->width);
 	while (++w < d->width)
 	{
 		init_ray(&d->p, d, w);
@@ -98,28 +100,11 @@ void	put_walls(char **map, t_mlx *d, t_int draw)
 		{
 			buffer = textures_walls(d, &d->p, draw);
 			ft_verline_tex(d, draw, w, buffer);
+			free(buffer);
 		}
-		free(buffer);
-	}
-}
-
-void	ft_fill_walls(char **map, t_mlx *d)
-{
-	int		w;
-	t_int	draw;
-
-	w = -1;
-	d->zbuffer = malloc(sizeof(double) * d->width);
-	while (++w < d->width)
-	{
-		init_ray(&d->p, d, w);
-		dist_side(&d->p);
-		d->p.side = ft_hit(&d->p, map);
-		draw = size_ray(&d->p, d, d->p.side);
 		d->zbuffer[w] = d->p.walldist;
 	}
 	if (d->numsprites)
 		fill_sprites(map, d);
-	put_walls(map, d, draw);
 	free(d->zbuffer);
 }

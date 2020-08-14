@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 16:12:03 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 12:54:12 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/28 20:21:43 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ char	*ft_transfert_map(int fd, char *line)
 	rd = get_next_line(fd, &line);
 	while (rd)
 	{
+		if (!line[0])
+			ft_error(2);
 		ft_file_x(&line, 0, 0, 0);
 		ft_strnjoin(&s, line);
 		ft_free_str(&line);

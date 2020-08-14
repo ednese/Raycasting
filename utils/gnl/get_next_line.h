@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:13:18 by esende            #+#    #+#             */
-/*   Updated: 2020/06/14 12:38:57 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/21 15:25:55 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 int		ft_strcchr(char *src, int c);
 char	*ft_stradd(char **dst, char *str);
 char	*ft_firstchr(char *src, int c);
-char	*ft_chrmove(char **dst, int c);
+int		ft_chrmove(char **dst, int c);
 int		get_next_line(int fd, char **line);
 
 #endif

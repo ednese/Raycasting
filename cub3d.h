@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 15:18:53 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 13:52:16 by esende           ###   ########.fr       */
+/*   Updated: 2020/07/01 10:04:50 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
+# include <stdbool.h>
 # include <mlx.h>
 # include "./libraries/libft/libft.h"
 # include "utils/gnl/get_next_line.h"
@@ -26,9 +27,9 @@
 # include <X11/keysymdef.h>
 
 # define FR +2
-# define UP			122
+# define UP			119
 # define DOWN		115
-# define LEFT		113
+# define LEFT		97
 # define RIGHT		100
 # define CAMLEFT	XK_Left
 # define CAMRIGHT	XK_Right
@@ -156,6 +157,7 @@ typedef struct		s_mlx
 	int			error;
 	int			index;
 	int			numsprites;
+	int			input;
 	t_img		img;
 	t_pos		p;
 	t_spt		s;
@@ -163,7 +165,7 @@ typedef struct		s_mlx
 }					t_mlx;
 
 void				ft_init_struct(t_mlx *d, char **av);
-int					ft_resolution(char *s, t_mlx *d);
+void				ft_resolution(char *s, t_mlx *d);
 char				*ft_itoahex(unsigned int n);
 char				*ft_itoahex_color(long int n);
 int					ft_atoi_base(char *str, char *base);
@@ -173,11 +175,12 @@ char				*ft_transfert_map(int fd, char *line);
 void				ft_error(int e);
 int					ft_verify_line(char *s);
 char				*ft_strmore(char **s, char *c);
-int					ft_put_pixels(t_mlx *d, int n);
+int					ft_put_pixels(t_mlx *d);
 int					ft_pos(t_pos *p, char **map, t_mlx *d);
 double				ft_abs(double n);
 void				ft_rotate(t_mlx *d, double v, int n);
-int					key(int key, t_mlx *d);
+int					press(int key, t_mlx *d);
+int					release(int key, t_mlx *d);
 int					ft_exit(t_mlx *d);
 void				ft_fill_walls(char **map, t_mlx *d);
 int					ft_verline(t_mlx *d, t_int size, int x, int color);
@@ -193,5 +196,8 @@ void				header_file(t_mlx *d, char *filename);
 void				init_arg(t_mlx *d);
 int					check_map(char **map);
 int					ft_file_x(char **file, int ret, int d, int f);
+bool				equal(char *str, char *str1);
+char				*tolowercase(char *str);
+int					space_error(char **map);
 
 #endif

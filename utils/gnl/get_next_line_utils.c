@@ -6,7 +6,7 @@
 /*   By: esende <esende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 14:25:00 by esende            #+#    #+#             */
-/*   Updated: 2020/06/20 14:25:02 by esende           ###   ########.fr       */
+/*   Updated: 2020/06/21 15:26:08 by esende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	*ft_firstchr(char *src, int c)
 	return (res);
 }
 
-char	*ft_chrmove(char **dst, int c)
+int		ft_chrmove(char **dst, int c)
 {
 	char	*res;
 	size_t	index;
@@ -86,5 +86,5 @@ char	*ft_chrmove(char **dst, int c)
 		res[len] = (*dst)[index + 1 + len];
 	free(*dst);
 	*dst = res;
-	return (res);
+	return (1);
 }
